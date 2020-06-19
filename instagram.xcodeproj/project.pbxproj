@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		332CB7FF249C9CF70013FC63 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332CB7FE249C9CF70013FC63 /* Const.swift */; };
+		332CB801249CB7470013FC63 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332CB800249CB7470013FC63 /* PostData.swift */; };
 		337C700A2498A021006195DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337C70092498A021006195DC /* AppDelegate.swift */; };
 		337C700C2498A021006195DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337C700B2498A021006195DC /* SceneDelegate.swift */; };
 		337C70112498A021006195DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 337C700F2498A021006195DC /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		072D658FD5E1539C9432CAC5 /* Pods-instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagram.release.xcconfig"; path = "Target Support Files/Pods-instagram/Pods-instagram.release.xcconfig"; sourceTree = "<group>"; };
+		332CB7FE249C9CF70013FC63 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		332CB800249CB7470013FC63 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		337C70062498A021006195DC /* instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337C70092498A021006195DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		337C700B2498A021006195DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				337C70232498A29B006195DC /* PostViewController.swift */,
 				337C70252498A2AB006195DC /* SettingViewController.swift */,
 				337C70292498BB62006195DC /* GoogleService-Info.plist */,
+				332CB7FE249C9CF70013FC63 /* Const.swift */,
+				332CB800249CB7470013FC63 /* PostData.swift */,
 			);
 			path = instagram;
 			sourceTree = "<group>";
@@ -106,7 +112,6 @@
 				FA7EAF388EC29055C1615922 /* Pods-instagram.debug.xcconfig */,
 				072D658FD5E1539C9432CAC5 /* Pods-instagram.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -228,8 +233,10 @@
 			files = (
 				337C70222498A28D006195DC /* ImageSelectViewController.swift in Sources */,
 				337C70282498B0C0006195DC /* TabBarController.swift in Sources */,
+				332CB7FF249C9CF70013FC63 /* Const.swift in Sources */,
 				337C70202498A27C006195DC /* HomeViewController.swift in Sources */,
 				337C70242498A29B006195DC /* PostViewController.swift in Sources */,
+				332CB801249CB7470013FC63 /* PostData.swift in Sources */,
 				337C70262498A2AB006195DC /* SettingViewController.swift in Sources */,
 				337C701E2498A263006195DC /* LoginViewController.swift in Sources */,
 				337C700A2498A021006195DC /* AppDelegate.swift in Sources */,
@@ -378,6 +385,7 @@
 			baseConfigurationReference = FA7EAF388EC29055C1615922 /* Pods-instagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CJH9H7F4FQ;
 				INFOPLIST_FILE = instagram/Info.plist;
@@ -387,6 +395,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.Kana.h.instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -397,6 +406,7 @@
 			baseConfigurationReference = 072D658FD5E1539C9432CAC5 /* Pods-instagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CJH9H7F4FQ;
 				INFOPLIST_FILE = instagram/Info.plist;
@@ -406,6 +416,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.Kana.h.instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
