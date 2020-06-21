@@ -15,7 +15,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var captionLabel: UILabel?
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     
@@ -36,10 +36,10 @@ class PostTableViewCell: UITableViewCell {
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + ".jpg")
         postImageView.sd_setImage(with: imageRef)
         
-        self.captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        self.captionLabel?.text = "\(postData.name!) : \(postData.caption!)"
         
         //コメントの表示
-        self.commentLabel.text = "\(postData.name!) : \(postData.comment!)"
+        self.commentLabel.text = "\(postData.name!) : \(postData.comments)"
         
         self.dateLabel.text = ""
         if let date = postData.date {
