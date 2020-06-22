@@ -136,21 +136,21 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 style: UIAlertAction.Style.default) { _ in
                     if let text = alertTextField?.text {
                         postData.comments.append(text)
+                        // ログインしている場合
+                        if (Auth.auth().currentUser?.uid != nil) {
+                            // commentを更新する
+                            var updateValue: FieldValue
+                            updateValue = FieldValue.arrayUnion(["name": "\(text)", "content": "\(text)"])
+                            
+                            // commentsに更新データを書き込む
+                            let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
+                            postRef.updateData(["comments": updateValue])
+                        }
                     }
             }
         )
         self.present(alert, animated: true, completion: nil)
         
-        // commentsを更新する
-        if let myid = Auth.auth().currentUser?.uid {
-            // 更新データを作成する
-            var updateValue: FieldValue
-            updateValue = FieldValue.arrayUnion([myid])
-            
-            // commentsに更新データを書き込む
-            let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
-            postRef.updateData(["comments": updateValue])
-        }
     }
 }
 
