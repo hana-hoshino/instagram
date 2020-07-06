@@ -113,10 +113,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //ポップアップを出す
         var alertTextField: UITextField?
+        var nameTextField: UITextField?
         let alert = UIAlertController(
-            title: "コメントを入力してください",
-            message: "Please enter a comment",
+            title: "名前とコメントを入力してください",
+            message: "Please enter a name and comment",
             preferredStyle: UIAlertController.Style.alert)
+        alert.addTextField(
+            configurationHandler: {(textField: UITextField!) in
+                //textFieldのインスタンスをalertTextField変数に代入することで外の関数でも利用できるようにしています。
+                nameTextField = textField
+        })
         alert.addTextField(
             configurationHandler: {(textField: UITextField!) in
                 //textFieldのインスタンスをalertTextField変数に代入することで外の関数でも利用できるようにしています。
@@ -134,22 +140,27 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             UIAlertAction(
                 title: "OK",
                 style: UIAlertAction.Style.default) { _ in
-                    if let text = alertTextField?.text {
-                        postData.comments.append(text)
-                        // ログインしている場合
+                    if let content = alertTextField?.text, let name = nameTextField?.text {
+                        //ログインしている場合
                         if (Auth.auth().currentUser?.uid != nil) {
-                            // commentを更新する
+                            //Firebase上のcommentを更新する
                             var updateValue: FieldValue
-                            updateValue = FieldValue.arrayUnion(["name": "\(text)", "content": "\(text)"])
+                            let comment = "\(name) : \(content)"
+                            updateValue = FieldValue.arrayUnion([comment])
                             
-                            // commentsに更新データを書き込む
+                            //commentsに更新データを書き込む
                             let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
                             postRef.updateData(["comments": updateValue])
+                            
+                            //アプリ上のcommentを更新する
+                            postData.comments.append(comment)
                         }
                     }
             }
         )
         self.present(alert, animated: true, completion: nil)
+        
+        //self.tableView.reloadData() を追加するかも
         
     }
 }
