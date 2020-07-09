@@ -120,11 +120,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             preferredStyle: UIAlertController.Style.alert)
         alert.addTextField(
             configurationHandler: {(textField: UITextField!) in
+                textField.text = "Name"
                 //textFieldのインスタンスをalertTextField変数に代入することで外の関数でも利用できるようにしています。
                 nameTextField = textField
         })
         alert.addTextField(
             configurationHandler: {(textField: UITextField!) in
+                textField.text = "Comment"
                 //textFieldのインスタンスをalertTextField変数に代入することで外の関数でも利用できるようにしています。
                 alertTextField = textField
         })
@@ -153,7 +155,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             postRef.updateData(["comments": updateValue])
                             
                             //アプリ上のcommentを更新する
-                            postData.comments.append(comment)
+                            postData.comments.append("comments")
+                            print("DEBUG_PRINT: コメントが更新されました。")
                         }
                     }
             }
