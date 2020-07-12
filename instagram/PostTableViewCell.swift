@@ -39,7 +39,11 @@ class PostTableViewCell: UITableViewCell {
         self.captionLabel?.text = "\(postData.name!) : \(postData.caption!)"
         
         //コメントの表示
-        self.commentLabel.text = "コメント : \n\(postData.comments)"
+        var comment_str = ""
+        for comment in postData.comments {
+          comment_str += "\n"+comment
+        }
+        self.commentLabel.text = "コメント\(comment_str)"
         
         self.dateLabel.text = ""
         if let date = postData.date {
